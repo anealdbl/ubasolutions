@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "Layout.cshtml";
+    var contactPage = CurrentPage;
+}
+
+
+
+@if (contactPage.ContactGrid.ToString() != "")
+{
+    <span>
+        @contactPage.GetGridHtml("contactGrid")
+ 
+    </span>
+}
+
+@*@Html.Action("ShowForm", "ContactSurface")*@
+
+

@@ -1,0 +1,72 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Layout.cshtml";
+    var homePage = CurrentPage;
+
+    var imagePath = "";
+    if (homePage.HasValue("bannerImage"))
+    {
+        imagePath = homePage.bannerImage;
+    }
+
+}
+
+
+<div id="">
+    <img src="@imagePath" />
+</div>
+
+
+@{
+    if (homePage.HasValue("bodyText"))
+    {
+        <div>
+            @Html.Raw(homePage.bodyText)
+        </div>
+    }
+}
+
+<div>
+    @if (homePage.HasValue("solutionHeading"))
+    {
+        <h2>@Html.Raw(homePage.solutionHeading)</h2>
+    }
+</div>
+
+<div>
+
+    @if (Model.Content.HasValue("solutionPicker"))
+    {
+        var solutionList = CurrentPage.solutionPicker.ToString().Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+        var solutionCollection = Umbraco.Content(solutionList);
+        foreach (var item in solutionCollection)
+        {
+
+            <div>
+                <img width="50" height="50" src="@item.image" />
+            </div>
+            <div>
+                <h4> @item.title</h4>
+            </div>
+            <div class="panel-body">
+                <p>@item.description</p>
+            </div>
+
+
+        }
+    }
+</div>
+
+<div>
+    @if (homePage.HasValue("solutionSubHeading"))
+    {
+        @Html.Raw(homePage.solutionSubHeading)
+    }
+</div>
+@if (homePage.HasValue("solutionSubHeading"))
+{
+    @Html.Raw(homePage.testimonialsContent)
+}
+<div>
+
+</div>

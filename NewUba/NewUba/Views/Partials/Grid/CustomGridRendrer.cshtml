@@ -1,0 +1,37 @@
+﻿@inherits UmbracoViewPage<dynamic>
+@using Umbraco.Web.Templates
+@using Newtonsoft.Json.Linq
+
+@*
+    Razor helpers located at the bottom of this file
+*@
+
+@if (Model != null && Model.sections != null)
+{
+    var oneColumn = ((System.Collections.ICollection)Model.sections).Count == 1;
+
+    if (oneColumn)
+    {
+        foreach (var section in Model.sections)
+        {
+            foreach (var row in section.rows)
+            {
+                @renderRow(row, true);
+            }
+        }
+    }
+}
+
+@helper renderRow(dynamic row, bool singleColumn)
+{
+    foreach (var area in row.areas)
+    {
+        foreach (var control in area.controls)
+        {
+            if (control != null && control.editor != null && control.editor.view != null)
+            {
+                <text>@Html.Partial("grid/editors/base", (object)control)</text>
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Layout.cshtml";
+    var defaultPage = CurrentPage;
+}
+
+<div>
+    @if(defaultPage.HasValue("heading"))
+    {
+        <h3>@Html.Raw(defaultPage.heading)</h3>
+
+    }
+</div>
+<div>
+    @if (defaultPage.HasValue("description"))
+    {
+        @Html.Raw(defaultPage.description)
+    }
+</div>

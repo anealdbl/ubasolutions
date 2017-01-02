@@ -1,0 +1,28 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "Layout.cshtml";
+    var careerPage = CurrentPage;
+}
+
+<div>
+    @if(careerPage.HasValue("description") )
+    {
+    @Html.Raw(careerPage.description)
+    }
+</div>
+
+<div>
+    @if (Model.Content.HasValue("contentPicker"))
+    {
+        var careerList = CurrentPage.contentPicker.ToString().Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+        var solutionCollection = Umbraco.Content(careerList);
+        foreach (var item in solutionCollection)
+        {
+            <p>
+                <a href="@item.Url" class="" target="_blank">@item.title</a>
+            </p>
+        }
+    }
+</div>
+
+

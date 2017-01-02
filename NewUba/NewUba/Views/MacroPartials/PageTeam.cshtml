@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+
+@if (Model.MacroParameters.ContainsKey("heading"))
+{
+    <h3> @Html.Raw(Model.MacroParameters["heading"])</h3>
+}
+
+@if (Model.MacroParameters.ContainsKey("content"))
+{
+    <div> @Html.Raw(Model.MacroParameters["content"])</div>
+}
+
+@if (Model.MacroParameters.ContainsKey("seeOurCurrentOpeningBtn"))
+{
+    <div>
+        <input type="button" value= "@Html.Raw(Model.MacroParameters["seeOurCurrentOpeningBtn"])" />
+    </div>
+}
+

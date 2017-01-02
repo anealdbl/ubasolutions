@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Layout.cshtml";
+}
+@if (Model.Content.HasValue("mainContent"))
+{
+    var bannerList = CurrentPage.mainContent.ToString().Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+    var bannerCollection = Umbraco.Content(bannerList);
+    foreach (var item in bannerCollection)
+    {
+        @item.GetGridHtml("content", "CustomGridRendrer")
+    }
+
+
+}

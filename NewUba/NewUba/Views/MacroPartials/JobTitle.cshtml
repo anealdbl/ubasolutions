@@ -1,0 +1,34 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@{ 
+
+    var path = HttpContext.Current.Request.Url.ToString();
+}
+@if (Model.MacroParameters.ContainsKey("jobTitle"))
+{
+    @Html.Raw(Model.MacroParameters["jobTitle"])
+}
+
+<div>
+    <input type="button" value="Apply" />
+</div>
+	<div> Share with
+    
+    <ul style="list-style-type:none">
+        <li class="share__tool--facebook">
+            <a href="@string.Format("https://www.facebook.com/sharer/sharer.php?u={0}&t=uba-solutions", path)" title="Facebook" target="_blank">
+                <img src="~/Media/1010/fblogo.png" alt="Facebook" />
+            </a>
+        </li>
+        <li class="share__tool--twitter">
+            <a href="@string.Format("https://twitter.com/home?status={0}",path)" target="_blank" title="Twitter">
+                <img src="~/Media/1012/twitterlogo.png" alt="Twitter" />
+            </a>
+        </li>
+
+        <li class="share__tool--linkedin">
+            <a href="@string.Format("http://www.linkedin.com/shareArticle?mini=true&url={0}&title=uba-solutions&summary=uba-solutions&source=uba-solutions", path)" target="_blank" title="Linkedin">
+                <img src="~/Media/1011/linkedinlogo.png" alt="Linkedin"/>
+            </a>
+        </li>
+    </ul>
+     </div>

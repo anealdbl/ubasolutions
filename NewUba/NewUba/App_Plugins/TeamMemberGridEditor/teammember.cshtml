@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+@{
+    var teamMembers = Model.value.teammember;
+    var imagePath = "";
+
+}
+<h1>@Model.value.Heading</h1>
+<h2>@Model.value.subHeading</h2>
+<a href="@Model.value.vacancyURL">@Model.value.vacancy</a>
+@foreach (var item in teamMembers)
+{
+    if (item.imagePath != null)
+    {
+        imagePath = item.imagePath;
+    }
+    <img src="@imagePath" />
+    <p>@item.Name</p>
+    <p>@item.designation</p>
+}

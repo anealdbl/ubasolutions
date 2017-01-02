@@ -1,0 +1,26 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Monday, December 19, 2016 12:17:33 PM
+   Source : E:\ubaProject\NewUba\NewUba\NewUba\Umbraco_Client\
+     Dest : E:\ubaProject\NewUba\NewUba\NewUba\App_Data\NuGetBackup\20161219-121732\Umbraco_Client\
+
+    Files : *.*
+	    
+  Options : *.* /S /E /DCOPY:DA /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                   0	E:\ubaProject\NewUba\NewUba\NewUba\Umbraco_Client\
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         1         0         0         0         0         0
+   Files :         0         0         0         0         0         0
+   Bytes :         0         0         0         0         0         0
+   Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+   Ended : Monday, December 19, 2016 12:17:33 PM
+

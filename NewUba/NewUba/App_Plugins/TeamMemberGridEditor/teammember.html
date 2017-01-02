@@ -1,0 +1,55 @@
+﻿<style>
+    .box {
+        border: 1px solid #dbdbdb;
+    }
+</style>
+
+
+
+<div ng-controller="teammemberController">
+    <input ng-model="control.value.Heading" type="text" placeholder="Heading"/>
+    <input ng-model="control.value.subHeading" type="text" placeholder="Sub Heading" />
+      <table class="table para_group">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Designation</th>
+           
+            <th></th>
+        </tr>
+        <tbody ui:sortable ng:model="control.value.teammember">
+            <tr ng-repeat="rowData in control.value.teammember">
+                <td>
+                    <div style="height: 30px" class="usky-editor-placeholder" ng-click="setImage(rowData.id)" ng-if="rowData.imagePath == null">
+                        Click to insert image
+                    </div>
+                    <div style="height: 30px" ng-if="rowData.imagePath">
+                        <img style="height: 30px"
+                             ng-click="setImage(rowData.id)"
+                             ng-src="{{rowData.imagePath}}"
+                             class="fullSizeImage" />
+                    </div>
+                </td>
+                <td>
+                    <input ng-model="rowData.Name" type="text" />
+                </td>
+                <td>
+                    <input ng-model="rowData.designation" type="text" />
+                </td>
+                <td>
+                    <button class="btn btn-default-red" type="button" ng-click="RemoveRow(rowData.id)">-</button>
+                </td>
+            </tr>
+        </tbody>
+        <tr class="lastRow">
+            <td> <button class="btn btn-default" type="button" ng-click="AddRow()">+</button></td>
+            <td></td>
+            <td></td>
+            
+        </tr>
+    </table>
+
+    <input ng-model="control.value.vacancy" type="text" placeholder="Vacancy Text" />
+    <input ng-model="control.value.vacancyURL" type="url" placeholder="Vacancy URl" />
+</div>
+

@@ -1,0 +1,47 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Layout.cshtml";
+    var teamPage = CurrentPage;
+
+    var imagePath = "";
+    if (teamPage.HasValue("image"))
+    {
+        imagePath = teamPage.image;
+    }
+}
+
+<div><img src="@imagePath" /></div>
+
+<div>
+    @if (teamPage.HasValue("description"))
+    {
+        @Html.Raw(teamPage.description)
+    }
+</div>
+
+<div>
+
+    @if (Model.Content.HasValue("memberPicker"))
+    {
+        var memberList = CurrentPage.memberPicker.ToString().Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+        var memberCollection = Umbraco.Content(memberList);
+        foreach (var item in memberCollection)
+        {
+              <div>
+                <img width="50" height="50" src="@item.image" />
+            </div>
+            <div>
+                <h4> @item.heading</h4>
+            </div>
+            <div class="panel-body">
+                <p>@item.title</p>
+            </div>
+        }
+    }
+</div>
+
+<div>
+	@Umbraco.RenderMacro("DevelopmentAndDeliveryPhase")
+</div>
+
+

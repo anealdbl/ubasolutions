@@ -1,0 +1,31 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Layout.cshtml";
+    var solutionPage = CurrentPage;
+
+    var imagePath = "";
+    if (solutionPage.HasValue("image"))
+    {
+        imagePath = solutionPage.image;
+
+    }
+}
+
+<div>
+    <img src="@imagePath" />
+</div>
+<div>
+    @if(solutionPage.HasValue("title"))
+    {
+        @Html.Raw(solutionPage.title)
+    }
+</div>
+
+<div>
+    @*@if(solutionPage.HasValue("description"))
+    {
+    @Html.Raw("solutionPage.description");
+    }*@
+</div>
+
+

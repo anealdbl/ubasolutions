@@ -1,0 +1,20 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+@{
+
+    var howWeWorks = Model.value.howWeWorks;
+    var howWeWroksImgPath = "";
+}
+
+<h1>@Model.value.Heading</h1>
+<h3>@Model.value.subHeading</h3>
+
+@foreach (var item in howWeWorks)
+{
+    if (item.imagePath != null)
+    {
+        howWeWroksImgPath = item.imagePath;
+    }
+    <img src="@howWeWroksImgPath" />
+
+    <p>@item.description</p>
+}

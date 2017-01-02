@@ -1,0 +1,47 @@
+﻿<style>
+    .box {
+        border: 1px solid #dbdbdb;
+    }
+</style>
+
+
+
+<div ng-controller="ImageSliderController">
+      <table class="table para_group">
+        <tr>
+            <th>Image</th>
+            <th>Caption</th>
+           
+            <th></th>
+        </tr>
+        <tbody ui:sortable ng:model="control.value.features">
+            <tr ng-repeat="rowData in control.value.slider">
+                <td>
+                    <div style="height: 30px" class="usky-editor-placeholder" ng-click="setImage(rowData.id)" ng-if="rowData.imagePath == null">
+                        Click to insert image
+                    </div>
+                    <div style="height: 30px" ng-if="rowData.imagePath">
+                        <img style="height: 30px"
+                             ng-click="setImage(rowData.id)"
+                             ng-src="{{rowData.imagePath}}"
+                             class="fullSizeImage" />
+                    </div>
+                </td>
+                <td>
+                    <input ng-model="rowData.caption" type="text" />
+                </td>
+               
+                <td>
+                    <button class="btn btn-default-red" type="button" ng-click="RemoveRow(rowData.id)">-</button>
+                </td>
+            </tr>
+        </tbody>
+        <tr class="lastRow">
+            <td> <button class="btn btn-default" type="button" ng-click="AddRow()">+</button></td>
+            <td></td>
+            <td></td>
+            
+        </tr>
+    </table>
+</div>
+

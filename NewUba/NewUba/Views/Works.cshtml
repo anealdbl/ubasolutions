@@ -1,0 +1,45 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Layout.cshtml";
+    var workPage = CurrentPage;
+
+    var imagePath = "";
+    if (workPage.HasValue("bannerImage"))
+    {
+        imagePath = workPage.bannerImage;
+    }
+
+}
+@{ var selection = CurrentPage.Site().Children.Where("Visible"); }
+
+<div id="">
+    <img src="@imagePath" />
+</div>
+
+<nav>
+    <ul>
+        @foreach (var page in selection)
+        {
+            <li>
+             
+                @if (page.Children.Where("Visible").Count() > 0)
+                {
+                    <ul>
+                        @foreach (var subpage in page.Children.Where("NodeTypeAlias == \"works\"").Where("Visible"))
+                    {
+                            <li><a href="@subpage.Url">@subpage.Name</a></li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
+</nav>
+
+<div>
+	@if (workPage.HasValue("content"))
+    {
+       @workPage.content
+    }
+   
+</div>
